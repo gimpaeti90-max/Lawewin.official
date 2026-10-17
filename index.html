@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAWEWIN.ENT | 공식 웹사이트</title>
+<style>
+:root{--ink:#17243a;--muted:#65738a;--blue:#8fbce7;--pale:#edf4fb;--line:#dce5ef;--white:#fff;--navy:#101d31}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f7f9fc;color:var(--ink);font-family:"Pretendard","Noto Sans KR",Arial,sans-serif;line-height:1.75;word-break:keep-all}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 max(6vw,22px);position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(220,229,239,.9)}
+.brand{font-weight:850;letter-spacing:.11em;font-size:1rem}.brand span{color:#739fc9}.nav-right{display:flex;align-items:center;gap:24px}.nav-links{display:flex;gap:26px}.nav-links button{border:0;background:transparent;color:#66758a;font-size:.82rem;padding:8px 0;position:relative}.nav-links button.active,.nav-links button:hover{color:var(--ink)}.nav-links button.active:after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:#739fc9}.menu{display:none;background:white;border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--ink)}
+main{min-height:70vh}.page{display:none;animation:fade .3s ease}.page.active{display:block}@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* 히어로 영역: 기존 디자인 감성 보존 (깔끔한 톤앤매너) */
+.hero{min-height:calc(100vh - 74px);position:relative;display:flex;align-items:center;overflow:hidden;background:linear-gradient(125deg,#f8fbff 0%,#edf4fb 50%,#e4edf7 100%);isolation:isolate}
+.hero:before{content:"";position:absolute;z-index:-1;width:min(66vw,760px);height:min(66vw,760px);right:-10vw;top:50%;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle at 40% 38%,rgba(255,255,255,.98),rgba(199,221,244,.48) 40%,rgba(151,188,225,.14) 65%,transparent 70%);border:1px solid rgba(122,164,207,.2)}
+.hero:after{content:"";position:absolute;z-index:-1;right:9%;top:19%;width:1px;height:63%;background:linear-gradient(transparent,rgba(114,155,197,.38),transparent);transform:rotate(32deg)}
+.hero-content{width:min(1120px,100%);padding:86px 8vw 105px;position:relative}
+.eyebrow,.label{font-size:.68rem;letter-spacing:.2em;color:#648bb4;font-weight:750;text-transform:uppercase}
+.monogram{font:clamp(5.5rem,14vw,10rem)/.95 Georgia,serif;letter-spacing:-.12em;color:#233750;display:inline-block;position:relative;margin:32px 0 22px;padding-right:.14em}
+.monogram:after{content:"✦";position:absolute;top:.08em;right:-.05em;font-size:.22em;color:#78a1c9}
+.fullname{font-size:.78rem;letter-spacing:.28em;color:#627894;margin-bottom:18px;font-weight:600}
+.hero h1{font-size:clamp(2rem,4.5vw,3.3rem);font-weight:800;line-height:1.3;margin:0 0 20px;color:#172a42;letter-spacing:-.045em}
+.hero p{max-width:520px;color:#5a6e85;font-size:.98rem;margin:0;line-height:1.7}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:2px;font-size:.82rem;font-weight:600;transition:all .2s ease}
+.btn.primary{background:#233a54;color:#fff;border:1px solid #233a54}.btn.primary:hover{background:#152436}
+.btn.secondary{background:rgba(255,255,255,.8);color:#233a54;border:1px solid #c8d8e8}.btn.secondary:hover{background:#fff;border-color:#a8c2dc}
+
+/* 🖼️ 얼음빛 브랜드 스플래시 포스터 섹션 (홈 페이지 전용 브랜드 비주얼 영역) */
+.brand-splash-card{
+  width:100%;
+  border-radius:12px;
+  overflow:hidden;
+  margin:40px 0;
+  border:1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(23,36,58,0.06);
+  background: #101d31;
+}
+.brand-splash-img{
+  width:100%;
+  height:auto;
+  max-height:480px;
+  object-fit:cover;
+  display:block;
+}
+
+.content{max-width:1120px;margin:auto;padding:78px 7vw 92px}.page-heading{max-width:760px;margin-bottom:42px}.page-heading h2{font-size:clamp(2rem,5vw,3.6rem);line-height:1.27;letter-spacing:-.055em;margin:12px 0 15px}.page-heading p{color:var(--muted);max-width:690px;margin:0}.story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:8%}.large-copy{font-size:1.3rem;line-height:1.7;color:#2d4561}.body-copy{color:var(--muted);font-size:.94rem}.body-copy p{margin:0 0 17px}.quote{margin-top:28px;padding:20px 24px;border-left:2px solid #8fbce7;background:#edf4fb;color:#263d57}.section-band{background:#edf3f9;border-block:1px solid var(--line)}.center{text-align:center}.center .page-heading{margin-inline:auto}.quote-large{font-size:clamp(1.7rem,4.5vw,3.1rem);line-height:1.5;max-width:850px;margin:25px auto 12px}.muted{color:var(--muted)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0 42px}.stat-card{padding:23px 25px;border:1px solid var(--line);background:white}.stat-card strong{display:block;font-size:2.5rem;color:#355b82;line-height:1.3}.stat-card span{font-size:.82rem;color:var(--muted)}
+
+/* 연습생 팀 패널 */
+.team-panel{border:1px solid var(--line);background:#fff;padding:clamp(18px,3vw,30px)}
+.team-top{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:20px}.team-top h3{margin:0;font-size:1.3rem}.team-top p{margin:4px 0 0;color:var(--muted);font-size:.82rem}
+.team-photo{width:100%;aspect-ratio:16/7;min-height:210px;max-height:500px;background:linear-gradient(135deg,#e9f1f9,#d8e5f2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#7188a2;text-align:center;border-radius:4px}
+.team-photo img{position:absolute;width:100%;height:100%;inset:0;object-fit:cover}
+
+.names-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 12px}.names-header h4{margin:0;font-size:.95rem}.names-header span{font-size:.75rem;color:var(--muted)}
+.name-list{display:flex;flex-wrap:wrap;gap:9px}
+.name-chip{display:flex;align-items:center;gap:5px;padding:6px 14px;background:#f3f7fb;border:1px solid #e1e9f2;border-radius:2px;font-size:.85rem;color:#233a54;font-weight:600}
+
+.vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.vision-card{background:white;border:1px solid var(--line);padding:24px;min-height:180px}.vision-card .num{font:1.8rem Georgia,serif;color:#7298bd}.vision-card h3{margin:12px 0 8px;font-size:1rem}.vision-card p{margin:0;color:var(--muted);font-size:.85rem}.building{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+/* 사옥 비주얼 카드 */
+.building-visual{min-height:300px;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:4px;background:#101d31}
+.building-visual img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.building-caption{position:absolute;left:18px;bottom:16px;z-index:2;font-size:.68rem;letter-spacing:.1em;color:#ffffff;background:rgba(16,29,49,0.7);padding:4px 10px;border-radius:2px}
+.building-info{padding:24px;border:1px solid var(--line);background:white}.building-info h3{margin:0 0 10px;font-size:1.2rem}.building-info p,.building-info li{color:var(--muted);font-size:.87rem}.building-info ul{padding-left:18px}.building-info li{margin:7px 0}.future{margin-top:18px;padding:22px;background:#edf4fb;border:1px solid var(--line)}.future h3{margin:0 0 8px}.future p{color:var(--muted);margin:0;font-size:.88rem}
+footer{padding:24px 6vw;display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);color:#8290a2;background:white;font-size:.7rem;letter-spacing:.06em}footer strong{color:#263c56;letter-spacing:.1em}
+
+@media(max-width:760px){.nav{height:66px;padding:0 5vw}.nav-right{gap:10px}.menu{display:block}.nav-links{display:none;position:absolute;top:65px;left:0;right:0;background:#fff;padding:15px 6vw 22px;flex-direction:column;gap:8px;border-bottom:1px solid var(--line)}.nav-links.open{display:flex}.nav-links button{text-align:left;padding:8px 0}.hero{min-height:calc(100vh - 66px)}.hero-content{padding:60px 7vw 45px}.content{padding:58px 6vw 70px}.story-grid,.building{grid-template-columns:1fr;gap:22px}.stats-grid,.vision-grid{grid-template-columns:1fr}.team-top{align-items:flex-start;flex-direction:column}.team-photo{aspect-ratio:4/3;min-height:180px}footer{flex-direction:column;align-items:center;text-align:center}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="#" data-page="home">LAWEWIN<span>.ENT</span></a>
+  <div class="nav-right">
+    <nav class="nav-links" id="navLinks" aria-label="주요 메뉴">
+      <button class="active" data-page="home">홈</button>
+      <button data-page="about">브랜드 소개</button>
+      <button data-page="trainees">연습생</button>
+      <button data-page="vision">비전 & 사옥</button>
+    </nav>
+    <button class="menu" id="menuBtn" aria-expanded="false">메뉴 ☰</button>
+  </div>
+</header>
+
+<main>
+<!-- 1. 메인 홈 페이지 -->
+<section class="page active" id="home">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">INDEPENDENT ENTERTAINMENT CONCEPT</div>
+      <div class="monogram">LW</div>
+      <div class="fullname">LAST WEEK WINTER BREAK</div>
+      <h1>Where vision meets reality,<br>and passion finds form.</h1>
+      <p>마침표가 아닌, 새로운 파장의 시작.<br>서로 다른 개성이 만나 새로운 이야기를 만들어 갑니다.</p>
+      <div class="actions">
+        <button class="btn primary" data-page="about">브랜드 알아보기 ↗</button>
+        <button class="btn secondary" data-page="trainees">우리의 팀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🌟 브랜드 스플래시 로고 그래픽이 가장 돋보이는 위치 (홈 상단 아트워크 배너) -->
+  <div class="content" style="padding-top:40px; padding-bottom:40px;">
+    <div class="brand-splash-card">
+      <!-- 📌 이미지 파일이 images 폴더에 있으면 아래 src 경로로 자동 로드됩니다 -->
+      <img src="images/얼음빛 LW 브랜드 스플래시 화면.png" alt="LAWEWIN.ENT Brand Splash" class="brand-splash-img" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- 2. 브랜드 소개 페이지 -->
+<section class="page" id="about">
+  <div class="content">
+    <div class="page-heading">
+      <div class="label">ABOUT LAWEWIN</div>
+      <h2>끝에서 시작되는<br>새로운 이야기.</h2>
+      <p>LAWEWIN.ENT는 'LAST WEEK WINTER BREAK'의 약자로, 한 시기의 마침표이자 새로운 시즌을 준비하는 특별한 순간을 의미합니다.</p>
+    </div>
+    <div class="story-grid">
+      <div class="large-copy">
+        익숙했던 시간의 끝에서,<br>
+        가장 차갑고도 맑은 에너지로<br>
+        다음 무대를 준비합니다.
+      </div>
+      <div class="body-copy">
+        <p>우리는 완성된 정답을 제시하기보다 아티스트 고유의 결을 다듬는 데 집중합니다. 겨울 방학의 마지막 주가 주는 묘한 설렘처럼, 새로움을 향한 기대감을 작품과 무대로 증명하고자 합니다.</p>
+        <p>각기 다른 색을 가진 아티스트들이 모여 하나의 온전한 세계관을 완성해 나가는 과정, 그 자체가 LAWEWIN의 정체성입니다.</p>
+        <div class="quote">
+          "정해진 틀을 벗어난 자유로움 속에서 비로소 진정한 아티스트의 가능성이 피어납니다."
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section-band">
+    <div class="content center">
+      <div class="label">OUR CORE VALUE</div>
+      <div class="quote-large">"가능성은 무한하게,<br>우리는 하나의 팀으로."</div>
+      <div class="muted">개개인의 개성을 존중하되 하나의 연주처럼 조화를 이룹니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 연습생 페이지 -->
+<section class="page" id="trainees">
+  <div class="content">
+    <div class="page-heading">
+      <div class="label">NEXT GENERATION</div>
+      <h2>우리의 팀을 소개합니다.</h2>
+      <p>꿈을 향해 함께 달리는 LAWEWIN.ENT의 차세대 아티스트들입니다.</p>
+    </div>
+
+    <div class="team-panel">
+      <div class="team-top">
+        <div>
+          <h3>LAWEWIN Trainee Team</h3>
+          <p>새로운 무대를 준비 중인 연습생 라인업입니다.</p>
+        </div>
+      </div>
+
+      <!-- 단체 사진 영역 -->
+      <div class="team-photo">
+        <!-- 📌 프로젝트 폴더의 team.jpg 사진이 바로 들어가는 위치입니다 -->
+        <img src="team.jpg" alt="LAWEWIN 연습생 단체 사진" onerror="this.style.display='none'">
+        <div style="padding:20px;">📷 team.jpg 사진 파일이 폴더에 위치하면 여기에 바로 표시됩니다.</div>
+      </div>
+
+      <div class="names-header">
+        <h4>멤버 목록</h4>
+        <span>총 7명</span>
+      </div>
+
+      <div class="name-list">
+        <div class="name-chip">Claire</div>
+        <div class="name-chip">ELENA</div>
+        <div class="name-chip">Glitterr</div>
+        <div class="name-chip">Sophia</div>
+        <div class="name-chip">SIlver</div>
+        <div class="name-chip">olivia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 비전 & 사옥 페이지 -->
+<section class="page" id="vision">
+  <div class="content">
+    <div class="page-heading">
+      <div class="label">VISION & HQ</div>
+      <h2>창의성이 숨쉬는 공간.</h2>
+      <p>아티스트의 성장을 지원하는 인프라와 체계적인 시스템을 구축하고 있습니다.</p>
+    </div>
+
+    <div class="vision-grid">
+      <div class="vision-card">
+        <div class="num">01</div>
+        <h3>Systematic Training</h3>
+        <p>보컬, 댄스, 프로듀싱까지 아티스트의 강점을 극대화하는 맞춤형 트레이닝.</p>
+      </div>
+      <div class="vision-card">
+        <div class="num">02</div>
+        <h3>Creative Studio</h3>
+        <p>최신 음향 장비와 안무 연습실을 갖춘 자사 전용 크리에이티브 공간.</p>
+      </div>
+      <div class="vision-card">
+        <div class="num">03</div>
+        <h3>Global Mindset</h3>
+        <p>글로벌 무대를 겨냥한 언어 교육 및 문화적 스펙트럼 확장 프로그램.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <div class="building">
+        <div class="building-visual">
+          <!-- 📌 사옥 아트워크로 활용되는 회사 대표 스플래시 사진 -->
+          <img src="images/얼음빛 LW 브랜드 스플래시 화면.png" alt="LAWEWIN 사옥 비주얼" onerror="this.style.display='none'">
+          <div class="building-caption">LAWEWIN HQ / CENTER</div>
+        </div>
+        <div class="building-info">
+          <h3>신사옥 크리에이티브 센터</h3>
+          <p>아티스트들이 자유롭게 창작활동에 몰입할 수 있도록 설계된 전용 사옥 공간입니다.</p>
+          <ul>
+            <li>지하 1층 ~ 2층: 댄스 스튜디오 및 레코딩 룸</li>
+            <li>3층: 아티스트 트레이닝실 및 미디어 랩</li>
+            <li>4층 ~ 5층: 기획/제작 인프라 및 커뮤니티 라운지</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div><strong>LAWEWIN.ENT</strong> — ARCHIVE OF POTENTIAL</div>
+  <div>© LAWEWIN ENTERTAINMENT. ALL RIGHTS RESERVED.</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const navBtns = document.querySelectorAll('.nav-links button, [data-page]');
+  const pages = document.querySelectorAll('.page');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(pageId);
+    if(target) target.classList.add('active');
+
+    document.querySelectorAll('.nav-links button').forEach(b => {
+      b.classList.toggle('active', b.dataset.page === pageId);
+    });
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    if(navLinks) navLinks.classList.remove('open');
+  }
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const page = btn.dataset.page;
+      if(page) {
+        e.preventDefault();
+        showPage(page);
+      }
+    });
+  });
+
+  if(menuBtn) {
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+});
+</script>
+</body>
+</html>
